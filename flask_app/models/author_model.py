@@ -17,3 +17,11 @@ class Author:
     def get_all_authors(cls):
         query = """SELECT * FROM authors;"""
         return connectToMySQL(DB).query_db(query)
+    
+    @classmethod
+    def get_one_author(cls, data):
+        query = """SELECT * FROM authors WHERE id = %(id)s;"""
+        results = connectToMySQL(DB).query_db(query, data)
+        if results:
+            return cls(results[0])
+        return False
