@@ -25,3 +25,5 @@ class Author:
         if results:
             return cls(results[0])
         return False
+    
+    
